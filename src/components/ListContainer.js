@@ -2,13 +2,19 @@ import React, { Component } from "react";
 import { getImages } from "../actions";
 import { connect } from "react-redux";
 import List from "./List";
+import CreateFormContainer from "./CreateFormContainer";
 
 class ListContainer extends Component {
   componentDidMount() {
     this.props.getImages();
   }
   render() {
-    return <List images={this.props.images} />;
+    return (
+      <div>
+        <CreateFormContainer />
+        <List images={this.props.images} />
+      </div>
+    );
   }
 }
 

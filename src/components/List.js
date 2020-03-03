@@ -4,12 +4,18 @@ export default class List extends Component {
   render() {
     const list = this.props.images.map(image => {
       return (
-        <div>
+        <div key={image.id}>
           <h3>{image.title}</h3>
-          <img src={image.url} />
+          <img alt={this.title} src={image.url} />
         </div>
       );
     });
-    return list;
+    {
+      if (!this.props.images) {
+        return <div>Loading...</div>;
+      } else {
+        return list;
+      }
+    }
   }
 }
