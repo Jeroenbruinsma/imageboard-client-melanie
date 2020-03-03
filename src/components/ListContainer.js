@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { getImages } from "../actions";
 import { connect } from "react-redux";
 import List from "./List";
-import CreateFormContainer from "./CreateFormContainer";
+// import CreateFormContainer from "./CreateFormContainer";
+// import LoginFormContainer from "./LoginFormContainer";
 
 class ListContainer extends Component {
   componentDidMount() {
@@ -11,15 +12,19 @@ class ListContainer extends Component {
   render() {
     return (
       <div>
-        <CreateFormContainer />
-        <List images={this.props.images} />
+        {/* <LoginFormContainer />
+        {this.props.user ? <CreateFormContainer /> : null} */}
+        <List images={this.props.images} user={this.props.user} />
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { images: state.images };
+  return {
+    images: state.images,
+    user: state.user
+  };
 }
 
 const mapDispatchToProps = { getImages };

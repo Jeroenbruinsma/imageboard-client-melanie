@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import LoginFormContainer from "./LoginFormContainer";
+import CreateFormContainer from "./CreateFormContainer";
 
 export default class List extends Component {
   render() {
@@ -14,7 +16,12 @@ export default class List extends Component {
       if (!this.props.images) {
         return <div>Loading...</div>;
       } else {
-        return list;
+        return (
+          <div>
+            {this.props.user ? <CreateFormContainer /> : <LoginFormContainer />}
+            {list}
+          </div>
+        );
       }
     }
   }

@@ -44,3 +44,23 @@ export const createImage = data => dispatch => {
     })
     .catch(console.error);
 };
+export const JWT = "JWT";
+
+function loggingIn(payload) {
+  return {
+    type: JWT,
+    payload
+  };
+}
+
+export const login = data => dispatch => {
+  request
+    .post(`${baseUrl}/login`)
+    .send(data)
+    .then(response => {
+      console.log("login action", response.body);
+      const action = loggingIn(response.body);
+      dispatch(action);
+    })
+    .catch(console.error);
+};
