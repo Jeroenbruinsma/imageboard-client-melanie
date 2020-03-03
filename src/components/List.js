@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LoginFormContainer from "./LoginFormContainer";
 import CreateFormContainer from "./CreateFormContainer";
+import SignUpFormContainer from "./SignUpFormContainer";
 
 export default class List extends Component {
   render() {
@@ -18,7 +19,14 @@ export default class List extends Component {
       } else {
         return (
           <div>
-            {this.props.user ? <CreateFormContainer /> : <LoginFormContainer />}
+            {this.props.user ? (
+              <CreateFormContainer />
+            ) : (
+              <div>
+                <LoginFormContainer />
+                <SignUpFormContainer />
+              </div>
+            )}
             {list}
           </div>
         );

@@ -1,4 +1,4 @@
-import { JWT } from "../actions";
+import { JWT, CREATE_USER } from "../actions";
 
 const initialState = "";
 
@@ -7,6 +7,7 @@ export default function(state = initialState, action) {
     case JWT: {
       return action.payload;
     }
+
     default: {
       return state;
     }

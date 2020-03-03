@@ -63,8 +63,28 @@ export const login = data => dispatch => {
     .post(`${baseUrl}/login`)
     .send(data)
     .then(response => {
-      console.log("login action", response.body);
+      // console.log("login action", response.body);
       const action = loggingIn(response.body);
+      dispatch(action);
+    })
+    .catch(console.error);
+};
+
+export const CREATE_USER = "CREATE_USER";
+
+function signUp(payload) {
+  return {
+    type: CREATE_USER,
+    payload
+  };
+}
+
+export const createUser = data => dispatch => {
+  request
+    .post(`${baseUrl}/user`)
+    .send(data)
+    .then(response => {
+      const action = signUp(response.body);
       dispatch(action);
     })
     .catch(console.error);

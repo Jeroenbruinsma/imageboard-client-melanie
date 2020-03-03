@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-export default class LoginForm extends Component {
+export default class SignUpForm extends Component {
   render() {
     return (
       <div>
-        <h3>Login:</h3>
+        <h3>Sign Up:</h3>
         <form onSubmit={this.props.onSubmit}>
           <p>
             Email:
@@ -23,7 +23,7 @@ export default class LoginForm extends Component {
               onChange={this.props.onChange}
               values={this.props.values.password}
             />{" "}
-            <button type="submit">Login</button>
+            <button type="submit">Sign Up</button>
           </p>
         </form>
       </div>
