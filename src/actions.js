@@ -2,8 +2,8 @@ import request from "superagent";
 
 export const ALL_IMAGES = "ALL_IMAGES";
 
-// const baseUrl = "http://localhost:4000";
-const baseUrl = "https://damp-river-67026.herokuapp.com";
+const baseUrl = "http://localhost:4000";
+// const baseUrl = "https://damp-river-67026.herokuapp.com";
 
 function allImages(payload) {
   return {
@@ -13,8 +13,10 @@ function allImages(payload) {
 }
 
 export const getImages = () => (dispatch, getState) => {
+  
   const state = getState();
   const { images } = state;
+
   if (!images.length) {
     request(`${baseUrl}/image`)
       .then(response => {
@@ -40,7 +42,7 @@ export const createImage = data => (dispatch, getState) => {
 
   request
     .post(`${baseUrl}/image`)
-    .set("Authorization", `Bearer ${user.jwt}`)
+    .set(`Authorization`, `Bearer ${user.jwt}`)
     .send(data)
     .then(response => {
       const action = newImage(response.body);
@@ -49,6 +51,7 @@ export const createImage = data => (dispatch, getState) => {
     })
     .catch(console.error);
 };
+
 export const JWT = "JWT";
 
 function loggingIn(payload) {
@@ -86,6 +89,43 @@ export const createUser = data => dispatch => {
     .then(response => {
       const action = signUp(response.body);
       dispatch(action);
+    })
+    .catch(console.error);
+};
+
+export const USERS_FETCHED = "USERS_FETCHED";
+
+function usersLoaded(payload) {
+  return {
+    type: USERS_FETCHED,
+    payload
+  };
+}
+
+export const loadUsers = () => (dispatch, getState) => {
+  request(`${baseUrl}/user`)
+    .then(response => {
+      dispatch(usersLoaded(response.body));
+    })
+    .catch(console.error);
+};
+
+export const USER_FETCHED = "USER_FETCHED"
+
+const userFetched = user => {
+  console.log(user);
+  return {
+    type: USER_FETCHED,
+    payload: user
+  };
+};
+
+export const loadUser = id => dispatch => {
+  request
+    .get(`${baseUrl}/user/${id}`)
+    .send(id)
+    .then(response => {
+      dispatch(userFetched(response.body));
     })
     .catch(console.error);
 };

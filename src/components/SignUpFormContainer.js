@@ -5,15 +5,19 @@ import { createUser } from "../actions";
 
 class SignUpFormContainer extends Component {
   state = {
+    name: "",
     email: "",
     password: ""
   };
 
   onSubmit = event => {
     event.preventDefault();
-    this.props.createUser({
-      email: this.state.email,
-      password: this.state.password
+    this.props.createUser(this.state);
+
+    this.setState({
+      name: "",
+      email: "",
+      password: ""
     });
   };
 
@@ -28,7 +32,7 @@ class SignUpFormContainer extends Component {
       <SignUpForm
         onSubmit={this.onSubmit}
         onChange={this.onChange}
-        values={this.state}
+        value={this.state}
       />
     );
   }

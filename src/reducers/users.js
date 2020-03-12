@@ -1,10 +1,10 @@
-import { JWT } from "../actions";
+import { USERS_FETCHED } from "../actions";
 
 const initialState = "";
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case JWT: {
+    case USERS_FETCHED: {
       return action.payload;
     }
 
