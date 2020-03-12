@@ -19,7 +19,8 @@ class UserDetailsContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.users
+  user: state.selectedUser,
+  users: state.users
   // images: state.image
 });
 

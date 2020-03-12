@@ -13,7 +13,6 @@ function allImages(payload) {
 }
 
 export const getImages = () => (dispatch, getState) => {
-  
   const state = getState();
   const { images } = state;
 
@@ -110,10 +109,10 @@ export const loadUsers = () => (dispatch, getState) => {
     .catch(console.error);
 };
 
-export const USER_FETCHED = "USER_FETCHED"
+export const USER_FETCHED = "USER_FETCHED";
 
 const userFetched = user => {
-  console.log(user);
+  console.log("logging user", user);
   return {
     type: USER_FETCHED,
     payload: user
@@ -125,6 +124,8 @@ export const loadUser = id => dispatch => {
     .get(`${baseUrl}/user/${id}`)
     .send(id)
     .then(response => {
+      console.log("loadUser", response.body);
+
       dispatch(userFetched(response.body));
     })
     .catch(console.error);
