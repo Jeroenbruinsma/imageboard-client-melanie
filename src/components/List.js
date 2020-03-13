@@ -21,7 +21,7 @@ export default class List extends Component {
       } else {
         return (
           <div className="containerList">
-            {this.props.user ? (
+            {this.props.user.jwt ? (
               <div>
                 <CreateFormContainer /><br />
                 <Link to={"/user"}><button>See All Users</button></Link>

@@ -6,7 +6,8 @@ import { login } from "../actions";
 class LoginFormContainer extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    message: ""
   };
 
   onSubmit = event => {
@@ -14,7 +15,9 @@ class LoginFormContainer extends Component {
     this.props.login({
       email: this.state.email,
       password: this.state.password
+      
     });
+    this.setState({})
   };
 
   onChange = event => {

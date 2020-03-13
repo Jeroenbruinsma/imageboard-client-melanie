@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { loadUser, getImages } from "../actions";
+import { loadUser } from "../actions";
 import UserDetails from "./UserDetails";
 
 class UserDetailsContainer extends Component {
@@ -12,7 +12,7 @@ class UserDetailsContainer extends Component {
   }
 
   render() {
-    console.log("props container", this.props.images);
+    
 
     return <UserDetails user={this.props.user} />;
   }
@@ -26,6 +26,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { loadUser, getImages })(
+export default connect(mapStateToProps, { loadUser })(
   UserDetailsContainer
 );
