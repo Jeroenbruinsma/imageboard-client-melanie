@@ -1,31 +1,31 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { loadUser , getImages} from "../actions";
+import { loadUser, getImages } from "../actions";
 import UserDetails from "./UserDetails";
 
 class UserDetailsContainer extends Component {
   componentDidMount() {
     console.log("params test", this.props.match.params);
-    this.props.getImages();
+
     this.props.loadUser(Number(this.props.match.params.id));
-    
   }
 
   render() {
-    console.log("props container", this.props);
+    console.log("props container", this.props.images);
 
-    return <UserDetails user={this.props.user} images={this.props.images}/>;
+    return <UserDetails user={this.props.user} />;
   }
 }
 
 function mapStateToProps(state) {
-  console.log("mapstateToProps state image", state)
- return { 
-  user: state.users.selectedUser,
-  users: state.users.users,
-  images: state.image
-}};
+  console.log("mapstateToProps state image", state);
+  return {
+    user: state.users.selectedUser,
+    users: state.users.users
+  };
+}
 
-
-export default connect(mapStateToProps, { loadUser, getImages })(UserDetailsContainer);
+export default connect(mapStateToProps, { loadUser, getImages })(
+  UserDetailsContainer
+);
