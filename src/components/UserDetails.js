@@ -5,7 +5,7 @@ export default class UserDetails extends Component {
   buttonHandler = event => {
     console.log("buttonhandler", event.target.id)
 
-    this.props.onDelete(event.target.id)
+    this.props.onDelete(event.target.id, this.props.selectedUser.id)   //here
   }
 
 

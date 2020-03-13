@@ -138,18 +138,19 @@ const imageDeleted = id => ({
   id
 });
 
-export const deleteImage = id => (dispatch, getState) => {
+export const deleteImage = (id, userId) => (dispatch, getState) => {   //userid   added
   const state = getState();
   const { user } = state;
 
   console.log("action id", id);
   request
     .delete(`${baseUrl}/image`)
-    .set(`Authorization`, `Bearer ${user.jwt}`)
-    .send({ id: id })
+    .set(`Authorization`, `Bearer ${user.jwt}`)  //here many thing changed in this request!
+    .send({ id, userId })   
     .then(response => {
       console.log("response", response.data);
-      dispatch(imageDeleted(id));
+     // dispatch(imageDeleted(id));
+      dispatch(userFetched(response.body));  //this is de refetched data... missing the deleted image
     })
     .catch(console.error);
 };
