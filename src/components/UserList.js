@@ -13,7 +13,7 @@ export default class UserList extends Component {
       );
     } else {
       if (this.props.users) {
-        console.log("props", this.props);
+        // console.log("props", this.props);
         const users = this.props.users.map(user => (
           <li key={user.id}>
             <Link to={`/user/${user.id}`}>{user.name}</Link>

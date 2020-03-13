@@ -22,7 +22,7 @@ class ListContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(" list state", state.user);
+  // console.log(" list state", state.user);
   return {
     images: state.images,
     user: state.user

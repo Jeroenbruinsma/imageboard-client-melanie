@@ -2,8 +2,15 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export default class UserDetails extends Component {
+  buttonHandler = event => {
+    console.log("buttonhandler", event.target.id)
+
+    this.props.onDelete(event.target.id)
+  }
+
+
   render() {
-    console.log("images", this.props.selectedUser);
+    // console.log("images", this.props.selectedUser);
     const userImages =
       this.props.selectedUser.images === undefined
         ? "No user"
@@ -12,12 +19,13 @@ export default class UserDetails extends Component {
               <div key={img.id}>
                 <p>{img.title}</p>
                 <img src={img.url} />
-                <button onClick={this.props.onDelete}>Delete image</button>
+
+                <button id={img.id} onClick={this.buttonHandler}>Delete image</button>
               </div>
             );
           });
 
-    console.log("props", this.props.user.jwt);
+    // console.log("props", this.props.user.jwt);
     if (!this.props.user.jwt) {
       return (
         <div>

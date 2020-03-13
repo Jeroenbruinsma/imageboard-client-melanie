@@ -112,7 +112,7 @@ export const loadUsers = () => (dispatch, getState) => {
 export const USER_FETCHED = "USER_FETCHED";
 
 const userFetched = user => {
-  console.log("logging user", user);
+  // console.log("logging user", user);
   return {
     type: USER_FETCHED,
     payload: user
@@ -124,7 +124,7 @@ export const loadUser = id => dispatch => {
     .get(`${baseUrl}/user/${id}`)
     .send(id)
     .then(response => {
-      console.log("loadUser", response.body);
+      // console.log("loadUser", response.body);
 
       dispatch(userFetched(response.body));
     })
@@ -141,12 +141,14 @@ const imageDeleted = id => ({
 export const deleteImage = id => (dispatch, getState) => {
   const state = getState();
   const { user } = state;
-
+  
+  console.log("action id", id);
   request
     .delete(`${baseUrl}/image`)
     .set(`Authorization`, `Bearer ${user.jwt}`)
     .send(id)
     .then(response => {
+      console.log("response", response);
       dispatch(imageDeleted(id));
     })
     .catch(console.error);

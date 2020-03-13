@@ -6,7 +6,7 @@ import UserDetails from "./UserDetails";
 
 class UserDetailsContainer extends Component {
   componentDidMount() {
-    console.log("params test", this.props.match.params);
+    // console.log("params test", this.props.match.params);
 
     this.props.loadUser(Number(this.props.match.params.id));
   }
@@ -29,7 +29,6 @@ class UserDetailsContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("mapstateToProps state image", state.images);
   return {
     selectedUser: state.users.selectedUser,
     users: state.users.users,

@@ -7,7 +7,8 @@ class SignUpFormContainer extends Component {
   state = {
     name: "",
     email: "",
-    password: ""
+    password: "",
+    message: ""
   };
 
   onSubmit = event => {
@@ -17,7 +18,8 @@ class SignUpFormContainer extends Component {
     this.setState({
       name: "",
       email: "",
-      password: ""
+      password: "",
+      message: "You are sign up, you can login now."
     });
   };
 
@@ -29,11 +31,14 @@ class SignUpFormContainer extends Component {
 
   render() {
     return (
+      <div>
       <SignUpForm
         onSubmit={this.onSubmit}
         onChange={this.onChange}
         value={this.state}
       />
+      {this.state.message}
+      </div>
     );
   }
 }

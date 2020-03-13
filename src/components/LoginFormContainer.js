@@ -6,8 +6,7 @@ import { login } from "../actions";
 class LoginFormContainer extends Component {
   state = {
     email: "",
-    password: "",
-    message: ""
+    password: ""
   };
 
   onSubmit = event => {
@@ -17,9 +16,7 @@ class LoginFormContainer extends Component {
       password: this.state.password
       
     });
-    this.setState({})
-  };
-
+  }
   onChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -32,8 +29,8 @@ class LoginFormContainer extends Component {
         onSubmit={this.onSubmit}
         onChange={this.onChange}
         values={this.state}
-      />
-    );
-  }
+      />)
+    }
 }
+
 export default connect(null, { login })(LoginFormContainer);
