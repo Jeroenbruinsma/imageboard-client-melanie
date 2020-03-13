@@ -9,6 +9,7 @@ class ListContainer extends Component {
   componentDidMount() {
     this.props.getImages();
   }
+
   render() {
     return (
       <div>
@@ -21,6 +22,7 @@ class ListContainer extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log(" list state", state);
   return {
     images: state.images,
     user: state.user

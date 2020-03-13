@@ -15,9 +15,10 @@ class UserListContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  users: state.users.users,
-  images: state.image
-});
+function mapStateToProps(state) {
+  
+
+  return { users: state.users.users, images: state.image };
+}
 
 export default connect(mapStateToProps, { loadUsers })(UserListContainer);

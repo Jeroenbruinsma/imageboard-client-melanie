@@ -2,6 +2,9 @@ import React, { Component } from "react";
 
 export default class UserDetails extends Component {
   render() {
+    const userImages = this.props.images.filter(
+      image => image.userId === this.user.id
+    );
     console.log("props", this.props.user);
     if (this.props.user) {
       return (
