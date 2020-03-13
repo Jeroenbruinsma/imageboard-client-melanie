@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class UserDetails extends Component {
   render() {
-    console.log("images", this.props.user.images);
+    console.log("images", this.props.selectedUser);
     const userImages =
-      this.props.user.images === undefined
+      this.props.selectedUser.images === undefined
         ? "No user"
-        : this.props.user.images.map(img => {
+        : this.props.selectedUser.images.map(img => {
             return (
               <div key={img.id}>
                 <p>{img.title}</p>
@@ -15,17 +16,27 @@ export default class UserDetails extends Component {
             );
           });
 
-    console.log("props", this.props.user.images);
-    if (this.props.user) {
+    console.log("props", this.props.user.jwt);
+    if (!this.props.user.jwt) {
       return (
         <div>
-          <h1>{this.props.user.name}</h1>
-          <p>{this.props.user.email}</p>
-          {userImages}
+          <p>
+            You need to <Link to={"/"}>login</Link>!
+          </p>
         </div>
       );
     } else {
-      return <p>Loading....</p>;
+      if (this.props.selectedUser) {
+        return (
+          <div>
+            <h1>{this.props.selectedUser.name}</h1>
+            <p>{this.props.selectedUser.email}</p>
+            {userImages}
+          </div>
+        );
+      } else {
+        return <p>Loading....</p>;
+      }
     }
   }
 }

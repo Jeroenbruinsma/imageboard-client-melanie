@@ -14,15 +14,16 @@ class UserDetailsContainer extends Component {
   render() {
     
 
-    return <UserDetails user={this.props.user} />;
+    return <UserDetails user={this.props.user} selectedUser={this.props.selectedUser} />;
   }
 }
 
 function mapStateToProps(state) {
-  console.log("mapstateToProps state image", state);
+  console.log("mapstateToProps state image", state.user);
   return {
-    user: state.users.selectedUser,
-    users: state.users.users
+    selectedUser: state.users.selectedUser,
+    users: state.users.users,
+    user: state.user
   };
 }
 
