@@ -1,8 +1,8 @@
 import { USERS_FETCHED, USER_FETCHED } from "../actions";
 
 const initialState = {
-  users: "",
-  selectedUser: ""
+  users: [],
+  selectedUser: []
 };
 
 export default function(state = initialState, action) {

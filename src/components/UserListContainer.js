@@ -16,7 +16,7 @@ class UserListContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: state.users,
+  users: state.users.users,
   images: state.image
 });
 

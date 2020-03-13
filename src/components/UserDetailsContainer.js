@@ -19,9 +19,9 @@ class UserDetailsContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.selectedUser,
-  users: state.users
-  // images: state.image
+  user: state.users.selectedUser,
+  users: state.users.users,
+  images: state.image
 });
 
 export default connect(mapStateToProps, { loadUser })(UserDetailsContainer);
