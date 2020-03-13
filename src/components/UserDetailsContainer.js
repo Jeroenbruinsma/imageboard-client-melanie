@@ -11,9 +11,10 @@ class UserDetailsContainer extends Component {
     this.props.loadUser(Number(this.props.match.params.id));
   }
 
-  onDelete = event => {
-    event.preventDefault();
-    this.props.deleteImage(this.props.image.id);
+  onDelete = imageId => {
+    console.log("button test", imageId);
+    
+    this.props.deleteImage(imageId);
   };
 
   render() {

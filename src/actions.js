@@ -138,9 +138,14 @@ const imageDeleted = id => ({
   id
 });
 
-export const deleteImage = id => dispatch => {
+export const deleteImage = id => (dispatch, getState) => {
+  const state = getState();
+  const { user } = state;
+
   request
     .delete(`${baseUrl}/image`)
+    .set(`Authorization`, `Bearer ${user.jwt}`)
+    .send(id)
     .then(response => {
       dispatch(imageDeleted(id));
     })
