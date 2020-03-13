@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { loadUser } from "../actions";
+import { loadUser, deleteImage } from "../actions";
 import UserDetails from "./UserDetails";
 
 class UserDetailsContainer extends Component {
@@ -11,22 +11,32 @@ class UserDetailsContainer extends Component {
     this.props.loadUser(Number(this.props.match.params.id));
   }
 
-  render() {
-    
+  onDelete = event => {
+    event.preventDefault();
+    this.props.deleteImage(this.props.image.id);
+  };
 
-    return <UserDetails user={this.props.user} selectedUser={this.props.selectedUser} />;
+  render() {
+    return (
+      <UserDetails
+        user={this.props.user}
+        selectedUser={this.props.selectedUser}
+        onDelete={this.onDelete}
+      />
+    );
   }
 }
 
 function mapStateToProps(state) {
-  console.log("mapstateToProps state image", state.user);
+  console.log("mapstateToProps state image", state.images);
   return {
     selectedUser: state.users.selectedUser,
     users: state.users.users,
-    user: state.user
+    user: state.user,
+    image: state.images
   };
 }
 
-export default connect(mapStateToProps, { loadUser })(
+export default connect(mapStateToProps, { deleteImage, loadUser })(
   UserDetailsContainer
 );

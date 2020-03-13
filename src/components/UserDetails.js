@@ -12,6 +12,7 @@ export default class UserDetails extends Component {
               <div key={img.id}>
                 <p>{img.title}</p>
                 <img src={img.url} />
+                <button onClick={this.props.onDelete}>Delete image</button>
               </div>
             );
           });

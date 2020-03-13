@@ -130,3 +130,19 @@ export const loadUser = id => dispatch => {
     })
     .catch(console.error);
 };
+//delete single image
+export const IMAGE_DELETED = "IMAGE_DELETED";
+
+const imageDeleted = id => ({
+  type: IMAGE_DELETED,
+  id
+});
+
+export const deleteImage = id => dispatch => {
+  request
+    .delete(`${baseUrl}/image`)
+    .then(response => {
+      dispatch(imageDeleted(id));
+    })
+    .catch(console.error);
+};
