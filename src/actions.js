@@ -141,14 +141,14 @@ const imageDeleted = id => ({
 export const deleteImage = id => (dispatch, getState) => {
   const state = getState();
   const { user } = state;
-  
+
   console.log("action id", id);
   request
     .delete(`${baseUrl}/image`)
     .set(`Authorization`, `Bearer ${user.jwt}`)
-    .send(id)
+    .send({ id: id })
     .then(response => {
-      console.log("response", response);
+      console.log("response", response.data);
       dispatch(imageDeleted(id));
     })
     .catch(console.error);
